@@ -15,6 +15,16 @@ class DemandeVisiteMuseeSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test validation"() {
+        given: "Une demande de visite pour un musee"
+        Date now = new Date()
+        DemandeVisiteMusee demandeVisiteMusee = new DemandeVisiteMusee(musee: unMusee, demandeVisiste: uneDemande, dateDemande: now)
+
+        expect: "validation"
+        demandeVisiteMusee.validate() == true
+
+        where:
+        unMusee     | uneDemande
+        Mock(Musee) | Mock(DemandeVisite)
     }
 }
