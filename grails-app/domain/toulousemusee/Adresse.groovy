@@ -7,5 +7,8 @@ class Adresse {
     String ville
 
     static constraints = {
+        rue blank: false
+        codePostal blank: false
+        ville blank: false
     }
 }

@@ -15,6 +15,15 @@ class AdresseSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test adresse"() {
+        given: "Une adresse"
+        Adresse adresse = new Adresse(numero: unNumero, rue: uneRue, codePostal: unCode,ville: uneVille)
+
+        expect: "est valide"
+        adresse.validate() == true
+
+        where:
+        unNumero    |   uneRue      |   unCode  |   uneVille
+        9           |   "rue test"  |   "31000" | "Toulouse"
     }
 }

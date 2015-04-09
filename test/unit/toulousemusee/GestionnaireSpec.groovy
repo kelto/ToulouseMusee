@@ -15,6 +15,13 @@ class GestionnaireSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test Gestionnaire"() {
+
+        given: "Un gestionnaire"
+        Gestionnaire gestionnaire = new Gestionnaire(nom: "Dupond")
+
+        expect: "est valide"
+        gestionnaire.validate() == true
+
     }
 }
