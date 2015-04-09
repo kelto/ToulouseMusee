@@ -17,16 +17,18 @@ class MuseeSpec extends Specification {
 
     void "test validité d'un musee"() {
         given: "Un musee initialise avec tous ses parametres non vides"
+        /*
         Gestionnaire unGestionnaire = Mock(Gestionnaire)
         Adresse uneAdresse = Mock(Adresse)
+        */
         Musee musee = new Musee(nom: unNom, adresse: uneAdresse, telephone: unTel,
         accesBus: unAccesBus, accesMetro: unAccesBus, gestionnaire: unGestionnaire, horairesOuverture: horaire)
 
         expect: "le musee est valide"
-        musee.validate()
+        musee.validate() == true
 
         where:
-        unNom   |   unTel   |   unAccesBus  |   horaire
-        "Musee" |   "0"     |   "Rangueil"  |   "9h-18h"
+        unNom   |   unTel   |   unAccesBus  |   horaire     | unGestionnaire        | uneAdresse
+        "Musee" |   "0"     |   "Rangueil"  |   "9h-18h"    | Mock(Gestionnaire)    | Mock(Adresse)
     }
 }
