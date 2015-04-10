@@ -1,7 +1,7 @@
 package toulousemusee
 
 class Adresse {
-    int numero;
+    String numero;
     String rue;
     String codePostal
     String ville
