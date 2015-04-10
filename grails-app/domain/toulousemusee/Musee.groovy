@@ -14,7 +14,6 @@ class Musee {
         nom blank: false
         horairesOuverture blank: false
         telephone blank: false
-        accesMetro blank: false
-        accesBus blank: false
+        gestionnaire blank: false, unique: true
     }
 }
