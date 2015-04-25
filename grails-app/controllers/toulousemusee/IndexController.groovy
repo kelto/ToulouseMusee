@@ -3,8 +3,9 @@ package toulousemusee
 class IndexController {
 
     MuseesFavorisService museesFavorisService
+    RechercheMuseeService rechercheMuseeService
 
-    static allowedMethods = [addToFavorites: "POST",  removeFromFavorites: "GET"]
+    //static allowedMethods = [addToFavorites: "POST",  removeFromFavorites: "GET", search: "POST"]
 
     def index() {
         if(session.getAttribute("favoris") == null) {
@@ -17,8 +18,15 @@ class IndexController {
         }
         List<Musee> fav = session.getAttribute("favoris");
 
+
         [favoris: session.getAttribute("favoris") as List<Musee>]
     }
+
+    def search(){
+        def listMusee = rechercheMuseeService.searchMusee(params.nom,params.codePostal,params.rue)
+        render(view: 'index', model: [favoris: session.favoris, searchList: listMusee])
+    }
+
 
     def addToFavorites() {
         museesFavorisService.addTofavorites(params.int('id'), session)
