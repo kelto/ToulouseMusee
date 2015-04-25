@@ -9,13 +9,22 @@ class RechercheMuseeService {
 
     }
 
-    List<Musee> searchMusee(String nom, String codePostal, String rue){
+    List<Musee> searchMusee(String likeNom, String likeCodePostal, String likeRue){
         def musee = Musee.createCriteria()
         def res = musee.list {
-            if(nom){
-                like('nom',"%${nom}%")
+            if(likeNom){
+                like 'nom', "%${likeNom}%"
             }
-            order('nom',"desc")
+            if(likeCodePostal) {
+                adresse {
+                    like 'codePostal', "%${likeCodePostal}%"
+                }
+            }
+            if(likeRue) {
+                adresse {
+                    like 'rue', "%${likeRue}%"
+                }
+            }
         }
         res
     }
