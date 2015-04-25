@@ -17,4 +17,11 @@ class Musee {
         accesMetro blank: false
         accesBus blank: false
     }
+
+    public boolean equals(Musee musee) {
+        if(this.is(musee)) {
+            return true;
+        }
+        return this.id == musee.id
+    }
 }

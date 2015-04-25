@@ -2,29 +2,33 @@ package toulousemusee
 
 import grails.transaction.Transactional
 
+import javax.servlet.http.HttpSession
+
 
 @Transactional
 class MuseesFavorisService {
 
 
-    def addTofavorites(Musee musee, Utilisateur utilisateur) {
-        musee.save(flush: true)
-        utilisateur.save(flush: true)
-        MuseeFavoris fav = new MuseeFavoris(musee: musee, utilisateur: utilisateur)
-
-        fav.save(flush: true)
-
-        fav
-    }
-
-    def removeFromFavorites(Musee musee, Utilisateur utilisateur) {
-        MuseeFavoris fav = MuseeFavoris.findByMuseeAndUtilisateur(musee,utilisateur)
-        fav.delete(flush: true)
+    def addTofavorites(Integer id, HttpSession session) {
+        List<Musee> museeList = session.getAttribute("favoris") as List<Musee>
+        boolean exist = museeList.each {
+            if(it.id == id) return true
+        }
+        if (!exit) {
+            museeList.add(musee)
+            session.setAttribute("favoris", museeList)
+        }
 
     }
 
-    def getFavorites(Utilisateur utilisateur) {
-     MuseeFavoris.findAllByUtilisateur(utilisateur)
+    def removeFromFavorites(Integer id, HttpSession session) {
+
+        List<Musee> museeList = session.favoris as List<Musee>
+        museeList.removeAll {
+            it.id == id
+        }
+        session.favoris = museeList
+
     }
 
 
