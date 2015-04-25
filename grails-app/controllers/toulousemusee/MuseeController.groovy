@@ -7,7 +7,8 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class MuseeController {
-    def rms
+    MuseeService ms
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def doSearchMusee(){
@@ -40,7 +41,10 @@ class MuseeController {
             return
         }
 
-        museeInstance.save flush:true
+        def gestionnaire=museeInstance.gestionnaire
+        def adresse=museeInstance.adresse
+
+        ms.insertOrUpdateMusee(museeInstance,adresse,gestionnaire)
 
         request.withFormat {
             form multipartForm {
@@ -66,8 +70,11 @@ class MuseeController {
             respond museeInstance.errors, view:'edit'
             return
         }
+        def gestionnaire=museeInstance.gestionnaire
+        def adresse=museeInstance.adresse
 
-        museeInstance.save flush:true
+        ms.insertOrUpdateMusee(museeInstance,adresse,gestionnaire)
+
 
         request.withFormat {
             form multipartForm {

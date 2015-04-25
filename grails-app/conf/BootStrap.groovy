@@ -1,7 +1,8 @@
+
 import toulousemusee.Adresse
 import toulousemusee.Gestionnaire
 import toulousemusee.Musee
-import toulousemusee.TestDataService
+import toulousemusee.MuseeCSVService
 
 class BootStrap {
 
@@ -18,6 +19,7 @@ class BootStrap {
         Musee test2 = new Musee(nom: "Second", adresse: ad, telephone: "07",
                 accesBus: "Empalot", accesMetro: "Empalot", gestionnaire: g, horairesOuverture: "10h-18h")
         test2.save(flush: true)
+
     }
     def destroy = {
     }

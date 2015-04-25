@@ -3,7 +3,7 @@ package toulousemusee
 import grails.transaction.Transactional
 
 @Transactional
-class RechercheMuseeService {
+class MuseeService {
 
     def serviceMethod() {
 
@@ -29,6 +29,16 @@ class RechercheMuseeService {
         res
     }
 
+    def insertOrUpdateMusee(Musee musee,Adresse adresse, Gestionnaire gestionnaire){
 
+        musee.gestionnaire=gestionnaire
+        musee.adresse=adresse
+        musee.save(flush: true)
 
+        return musee
+    }
+
+    def deleteMusee(Musee musee){
+        musee.delete(flush: true)
+    }
 }
