@@ -17,7 +17,7 @@
 <h1>Search</h1>
 
 <div class="col-md-8">
-    <g:form id="search" url="[controller: 'index', action: 'search']">
+    <g:form id="search" url="[controller: 'index', action: 'toSearch']">
         <div class="control-group form-group">
             <div class="controls">
                 <label>Nom: </label>
@@ -33,7 +33,7 @@
                           from="${toulousemusee.Adresse.list().codePostal.unique()}" class="form-control"/>
             </div>
         </div>
-        <g:actionSubmit value="Rechercher" action="search" class="btn btn-primary"/>
+        <g:actionSubmit value="Rechercher" action="toSearch" class="btn btn-primary"/>
     </g:form>
 
 </div>
@@ -65,9 +65,13 @@
     <g:link class="btn-primary col-md-5 col-md-offset-3" action="addToFavorites" params="[id: musee.id, name: musee.nom]">Like</g:link>
     </div>
 </g:each>
-
-
-
+<div class="col-md-12">
+<g:if test="${session.getAttribute("page") > 0}">
+    <g:link class="edit" action="previous" controller="index" style="text-align: left">Precedente</g:link>
+</g:if>
+<g:if test="${session.getAttribute("nextPage")}">
+    <g:link class="edit" action="next" controller="index" style="text-align: right">Suivante</g:link>
+</g:if>
 </div>
 </body>
 </html>

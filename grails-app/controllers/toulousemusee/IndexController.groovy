@@ -13,8 +13,28 @@ class IndexController {
         [favoris: museesFavorisService.getFavorites(session)]
     }
 
+    def toSearch(){
+        session.setAttribute("nom",params.nom)
+        session.setAttribute("codePostal",params.codePostal)
+        session.setAttribute("rue",params.rue)
+        search()
+    }
+
     def search(){
-        def listMusee = museeService.searchMusee(params.nom,params.codePostal,params.rue)
+
+        if(session.getAttribute("page")==null)
+            session.setAttribute("page",0)
+        println(session.getAttribute("codePostal"))
+        def listMusee = museeService.searchMusee(session.getAttribute("nom"),session.getAttribute("codePostal"),session.getAttribute("rue"),session.getAttribute("page"))
+
+        if (listMusee.size() == Musee.MAX+1) {
+            println "max"
+            listMusee.remove(Musee.MAX)
+            session.setAttribute("nextPage", true)
+        }
+        else{
+            session.setAttribute("nextPage",false)
+        }
         render(view: 'index', model: [favoris: session.favoris, searchList: listMusee])
     }
 
@@ -32,5 +52,16 @@ class IndexController {
     def demandeVisite(){
         session.setAttribute("nomMusee",params.name)
         render(view: '/visite/visite')
+    }
+
+    def next(){
+        if(session.getAttribute("nextPage"))
+            session.setAttribute("page",session.getAttribute("page")+1)
+        search()
+    }
+    def previous(){
+        if(session.getAttribute("page")>0)
+            session.setAttribute("page",session.getAttribute("page")-1)
+        search()
     }
 }

@@ -9,6 +9,7 @@ class Musee {
     String accesBus
     Gestionnaire gestionnaire
     Adresse adresse
+    static final int MAX=5
 
     static constraints = {
         nom blank: false
