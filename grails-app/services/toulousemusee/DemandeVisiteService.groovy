@@ -66,4 +66,14 @@ class DemandeVisiteService {
         }
         visite
     }
+
+    def getVisite(String code) {
+        def all = DemandeVisite.findAll()
+
+        //def dv = DemandeVisite.findByCode("${code}")
+        def dv = DemandeVisite.findByCode(code)
+
+        dv
+
+    }
 }

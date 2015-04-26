@@ -19,4 +19,15 @@ class VisiteController {
 
         render(view : "resultatDemande", model:[code: visite.code])
     }
+
+    def seeVisite() {
+        def code = params.code
+        println "code: "+code
+        def dv = demandeVisiteService.getVisite(code)
+        if(dv == null){
+            redirect 'index'
+        }
+
+        [demande: dv]
+    }
 }
