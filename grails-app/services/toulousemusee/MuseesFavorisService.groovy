@@ -10,7 +10,7 @@ class MuseesFavorisService {
 
     def getFavorites(HttpSession session) {
         if(session.getAttribute("favoris") == null) {
-            ArrayList<Musee> list = Musee.findAll()
+            ArrayList<Musee> list = new ArrayList<>()
             session.setAttribute("favoris", list)
 
         }
