@@ -4,7 +4,7 @@ class DemandeVisite {
 
     public static final String TO_BE_TREATED = "in treatment",
                                 TREATED = "treated";
-    int code;
+    String code;
     Date dateDebutPeriode;
     Date dateFinPeriode;
     int nbPersonnes;

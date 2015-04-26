@@ -12,6 +12,11 @@
 </head>
 
 <body>
+<g:form id="seeVisite" url="[action: 'seeVisite']">
+    <label>Code visite: </label>
+    <g:textField name="code"/><br/>
+    <g:actionSubmit value="chercher visite" action="seeVisite"/>
+</g:form>
     <g:form url="[controller:'visite',action:'visite']">
         <fieldset style="text-align: center">
             <table>
