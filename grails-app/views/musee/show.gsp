@@ -23,6 +23,42 @@
 			</g:if>
 			<ol class="property-list musee">
 			
+				<g:if test="${museeInstance?.nom}">
+				<li class="fieldcontain">
+					<span id="nom-label" class="property-label"><g:message code="musee.nom.label" default="Nom" /></span>
+					
+						<span class="property-value" aria-labelledby="nom-label"><g:fieldValue bean="${museeInstance}" field="nom"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${museeInstance?.horairesOuverture}">
+				<li class="fieldcontain">
+					<span id="horairesOuverture-label" class="property-label"><g:message code="musee.horairesOuverture.label" default="Horaires Ouverture" /></span>
+					
+						<span class="property-value" aria-labelledby="horairesOuverture-label"><g:fieldValue bean="${museeInstance}" field="horairesOuverture"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${museeInstance?.telephone}">
+				<li class="fieldcontain">
+					<span id="telephone-label" class="property-label"><g:message code="musee.telephone.label" default="Telephone" /></span>
+					
+						<span class="property-value" aria-labelledby="telephone-label"><g:fieldValue bean="${museeInstance}" field="telephone"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${museeInstance?.gestionnaire}">
+				<li class="fieldcontain">
+					<span id="gestionnaire-label" class="property-label"><g:message code="musee.gestionnaire.label" default="Gestionnaire" /></span>
+					
+						<span class="property-value" aria-labelledby="gestionnaire-label"><g:link controller="gestionnaire" action="show" id="${museeInstance?.gestionnaire?.id}">${museeInstance?.gestionnaire?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${museeInstance?.accesBus}">
 				<li class="fieldcontain">
 					<span id="accesBus-label" class="property-label"><g:message code="musee.accesBus.label" default="Acces Bus" /></span>
@@ -41,38 +77,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${museeInstance?.gestionnaire}">
+				<g:if test="${museeInstance?.adresse}">
 				<li class="fieldcontain">
-					<span id="gestionnaire-label" class="property-label"><g:message code="musee.gestionnaire.label" default="Gestionnaire" /></span>
+					<span id="adresse-label" class="property-label"><g:message code="musee.adresse.label" default="Adresse" /></span>
 					
-						<span class="property-value" aria-labelledby="gestionnaire-label"><g:link controller="gestionnaire" action="show" id="${museeInstance?.gestionnaire?.id}">${museeInstance?.gestionnaire?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${museeInstance?.horairesOuverture}">
-				<li class="fieldcontain">
-					<span id="horairesOuverture-label" class="property-label"><g:message code="musee.horairesOuverture.label" default="Horaires Ouverture" /></span>
-					
-						<span class="property-value" aria-labelledby="horairesOuverture-label"><g:fieldValue bean="${museeInstance}" field="horairesOuverture"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${museeInstance?.nom}">
-				<li class="fieldcontain">
-					<span id="nom-label" class="property-label"><g:message code="musee.nom.label" default="Nom" /></span>
-					
-						<span class="property-value" aria-labelledby="nom-label"><g:fieldValue bean="${museeInstance}" field="nom"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${museeInstance?.telephone}">
-				<li class="fieldcontain">
-					<span id="telephone-label" class="property-label"><g:message code="musee.telephone.label" default="Telephone" /></span>
-					
-						<span class="property-value" aria-labelledby="telephone-label"><g:fieldValue bean="${museeInstance}" field="telephone"/></span>
+						<span class="property-value" aria-labelledby="adresse-label"><g:link controller="adresse" action="show" id="${museeInstance?.adresse?.id}">${museeInstance?.adresse?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

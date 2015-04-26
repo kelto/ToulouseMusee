@@ -3,7 +3,7 @@ package toulousemusee
 class DemandeVisiteMusee {
 
     Musee musee;
-    DemandeVisite demandeVisiste;
+    DemandeVisite demandeVisite;
     Date dateDemande;
 
     static constraints = {

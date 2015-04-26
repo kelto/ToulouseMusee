@@ -31,11 +31,11 @@ class MuseeService {
 
     def insertOrUpdateMusee(Musee musee,Adresse adresse, Gestionnaire gestionnaire){
 
-        musee.gestionnaire=gestionnaire
-        musee.adresse=adresse
-        musee.save(flush: true)
+            musee.gestionnaire=gestionnaire
+            musee.adresse=adresse
+            musee.save(flush: true)
 
-        return musee
+            return musee
     }
 
     def deleteMusee(Musee musee){

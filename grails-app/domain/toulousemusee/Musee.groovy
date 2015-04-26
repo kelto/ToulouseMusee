@@ -14,13 +14,7 @@ class Musee {
         nom blank: false
         horairesOuverture blank: false
         telephone blank: false
-        gestionnaire blank: false, unique: true
+        gestionnaire blank: false
     }
 
-    public boolean equals(Musee musee) {
-        if(this.is(musee)) {
-            return true;
-        }
-        return this.id == musee.id
-    }
 }
