@@ -12,14 +12,14 @@
     <title>Toulouse Musee</title>
 
     <!-- Bootstrap Core CSS -->
-<asset:stylesheet src="bootstrap.min.css"/>
+    <asset:stylesheet src="bootstrap.min.css"/>
 
-<!-- Custom CSS -->
-<asset:stylesheet src="modern-business.css"/>
+    <!-- Custom CSS -->
+    <asset:stylesheet src="modern-business.css"/>
 
 
-<!-- Custom Fonts -->
-<asset:stylesheet src="font-awesome.min.css"/>
+    <!-- Custom Fonts -->
+    <asset:stylesheet src="font-awesome.min.css"/>
 
 </head>
 
@@ -42,13 +42,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-<g:link url="[controller: 'index']">Index</g:link>
-</li>
-<li>
-<g:link url="[controller: 'visite']">Visite</g:link>
+                    <g:link url="[controller: 'index']">Index</g:link>
+                </li>
+                <li>
+                <g:link url="[controller: 'index']">Visite</a>
             </li>
                 <li>
-	<g:link url="[controller: 'musee']">Musée</g:link>
+                <g:link url="[controller: 'musee']">Musée</a>
             </li>
             </ul>
         </div>
@@ -58,33 +58,38 @@
 </nav>
 
 <!-- Page Content -->
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<h1 class="page-header">${pageHeader}
-					</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a>
+                </li>
+                <li class="active">Blog Home One</li>
+            </ol>
+            #}
+        </div>
+    </div>
 
-				</div>
-			</div>
+    <g:layoutBody/>
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>opensource website: <a href="https://github.com/kelto/keltorin">keltorin.com</a></p>
+            </div>
+        </div>
+    </footer>
 
-			<g:layoutBody/>
-			<!-- Footer -->
-			<footer>
-				<div class="row">
-					<div class="col-lg-12">
-						<p>opensource website: <a href="https://github.com/kelto/keltorin">keltorin.com</a></p>
-					</div>
-				</div>
-			</footer>
+</div>
+<!-- /.container -->
 
-		</div>
-		<!-- /.container -->
-
-        <!-- jQuery Version 1.11.0 -->
-		<asset:javascript src="jquery-1.11.0.js" />
-		<asset:javascript src="bootstrap.min.js" />
+<!-- jQuery Version 1.11.0 -->
+                    <asset:javascript src="jquery-1.11.0.js" />
+                    <asset:javascript src="bootstrap.min.js" />
 
 
-		</body>
+</body>
 
-        </html>
+</html>
