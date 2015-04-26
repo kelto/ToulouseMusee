@@ -20,11 +20,12 @@ class MuseesFavorisService {
 
     def addTofavorites(Integer id, HttpSession session) {
         List<Musee> museeList = session.getAttribute("favoris") as List<Musee>
-        boolean exist = museeList.each {
-            if(it.id == id) return true
+        boolean exist = false
+        museeList.each {
+            if(it.id == id) { exist = true }
         }
         if (!exist) {
-            museeList.add(musee)
+            museeList.add(Musee.findById(id))
             session.setAttribute("favoris", museeList)
         }
 
