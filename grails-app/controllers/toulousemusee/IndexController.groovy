@@ -5,8 +5,6 @@ class IndexController {
     MuseesFavorisService museesFavorisService
     MuseeService museeService
 
-    //static allowedMethods = [addToFavorites: "POST",  removeFromFavorites: "GET", search: "POST"]
-
     def index() {
         def l = museesFavorisService.getFavorites(session)
 
@@ -24,11 +22,10 @@ class IndexController {
 
         if(session.getAttribute("page")==null)
             session.setAttribute("page",0)
-        println(session.getAttribute("codePostal"))
         def listMusee = museeService.searchMusee(session.getAttribute("nom"),session.getAttribute("codePostal"),session.getAttribute("rue"),session.getAttribute("page"))
 
         if (listMusee.size() == Musee.MAX+1) {
-            println "max"
+
             listMusee.remove(Musee.MAX)
             session.setAttribute("nextPage", true)
         }

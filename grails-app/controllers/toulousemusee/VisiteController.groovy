@@ -22,7 +22,7 @@ class VisiteController {
 
     def seeVisite() {
         def code = params.code
-        println "code: "+code
+
         def dv = demandeVisiteService.getVisite(code)
         if(dv == null){
             redirect 'index'

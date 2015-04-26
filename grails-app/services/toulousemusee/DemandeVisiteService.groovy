@@ -9,18 +9,6 @@ class DemandeVisiteService {
 
     MuseeService museeService
 
-    def wrongAddVisite(DemandeVisite demandeVisite, DemandeVisiteMusee demandeVisiteMusee, Musee musee) {
-        musee.id ? null : museeService.insertOrUpdateMusee(musee, musee.adresse, musee.gestionnaire)
-        if (demandeVisite.id == null) {
-            if (demandeVisite.save(flush: true) == null) println("error demandeVisite save")
-        }
-
-        demandeVisiteMusee.musee = musee
-        demandeVisiteMusee.demandeVisite = demandeVisite
-
-        demandeVisiteMusee.save(flush: true)
-        demandeVisite
-    }
 
     def addVisite(List<Integer> listId, Date debut, Date fin, int nb) {
         Random random = new Random();
@@ -38,30 +26,15 @@ class DemandeVisiteService {
 
         //Creating the DemandeVisite and saving it
         DemandeVisite visite = new DemandeVisite(code: c, dateDebutPeriode: debut, dateFinPeriode: fin, nbPersonnes: nb, statut: DemandeVisite.TO_BE_TREATED)
-        if (visite.save(flush: true) == null) {
-            println "failed to save visite"
-        }
+        visite.save(flush: true)
+
         // The date of the Demande
         Date now = new Date()
         // For each Musee, create a DemandeVisiteMusee, which is bound to the DemandeVisite previously created.
         // and save it.
         listId.each {
-            println "it: " + it
-            println "it.class: " + it.class
-        }
-        /*
-        println id
-        Musee musee = Musee.findById(id)
-        if(musee == null) {
-            println "couldn't find musee"
-        }
-        */
-        listId.each {
-            if (new DemandeVisiteMusee(demandeVisite: visite, dateDemande: now, musee: Musee.findById(it)).save(flush: true, failOnError: true) == null) {
-                println "failed to save visiteMusee"
-            } else {
-                println "success"
-            }
+            new DemandeVisiteMusee(demandeVisite: visite, dateDemande: now, musee: Musee.findById(it)).save(flush: true)
+
 
         }
         visite
@@ -69,8 +42,6 @@ class DemandeVisiteService {
 
     def getVisite(String code) {
         def all = DemandeVisite.findAll()
-
-        //def dv = DemandeVisite.findByCode("${code}")
         def dv = DemandeVisite.findByCode(code)
 
         dv
