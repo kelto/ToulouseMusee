@@ -3,6 +3,7 @@ import toulousemusee.Adresse
 import toulousemusee.Gestionnaire
 import toulousemusee.Musee
 import toulousemusee.MuseeCSVService
+import toulousemusee.TestDataService
 
 class BootStrap {
 

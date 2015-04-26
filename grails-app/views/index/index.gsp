@@ -30,18 +30,18 @@
 <g:each in="${favoris}" status="i" var="museeInstance">
     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-        <td><g:link action="show" id="${museeInstance.id}">${fieldValue(bean: museeInstance, field: "accesBus")}</g:link></td>
-
-        <td>${fieldValue(bean: museeInstance, field: "id")}</td>
-        <td>${fieldValue(bean: museeInstance, field: "accesMetro")}</td>
-
-        <td>${fieldValue(bean: museeInstance, field: "gestionnaire")}</td>
-
-        <td>${fieldValue(bean: museeInstance, field: "horairesOuverture")}</td>
-
-        <td>${fieldValue(bean: museeInstance, field: "nom")}</td>
+        <td><g:link action="show" id="${museeInstance.id}">${fieldValue(bean: museeInstance, field: "nom")}</g:link></td>
 
         <td>${fieldValue(bean: museeInstance, field: "telephone")}</td>
+        %{-- LazyLoading, won't work. But better, no need for gestionnaire
+                <td>${fieldValue(bean: museeInstance, field: "gestionnaire")}</td>
+--}%
+                <td>${fieldValue(bean: museeInstance, field: "accesMetro")}</td>
+
+                <td>${fieldValue(bean: museeInstance, field: "accesBus")}</td>
+
+                <td>${fieldValue(bean: museeInstance, field: "horairesOuverture")}</td>
+
         <td>
 %{--
 <a href="${createLink( controller:'index', action:'removeFromFavorites', params: [id: museeInstance.id])}">remove </a>

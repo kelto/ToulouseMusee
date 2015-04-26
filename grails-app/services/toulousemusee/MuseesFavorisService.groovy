@@ -8,6 +8,15 @@ import javax.servlet.http.HttpSession
 @Transactional
 class MuseesFavorisService {
 
+    def getFavorites(HttpSession session) {
+        if(session.getAttribute("favoris") == null) {
+            ArrayList<Musee> list = Musee.findAll()
+            session.setAttribute("favoris", list)
+
+        }
+
+        return session.getAttribute("favoris")
+    }
 
     def addTofavorites(Integer id, HttpSession session) {
         List<Musee> museeList = session.getAttribute("favoris") as List<Musee>

@@ -41,7 +41,7 @@ class MuseeController {
         def gestionnaire=museeInstance.gestionnaire
         def adresse=museeInstance.adresse
 
-        ms.insertOrUpdateMusee(museeInstance,adresse,gestionnaire)
+        museeService.insertOrUpdateMusee(museeInstance,adresse,gestionnaire)
 
         request.withFormat {
             form multipartForm {
@@ -70,7 +70,7 @@ class MuseeController {
         def gestionnaire=museeInstance.gestionnaire
         def adresse=museeInstance.adresse
 
-        ms.insertOrUpdateMusee(museeInstance,adresse,gestionnaire)
+        museeService.insertOrUpdateMusee(museeInstance,adresse,gestionnaire)
 
 
         request.withFormat {
