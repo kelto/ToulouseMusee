@@ -28,4 +28,9 @@ class IndexController {
         museesFavorisService.removeFromFavorites(params.int('id'),session)
         render(view: 'index', model: [favoris: session.getAttribute("favoris") as List<Musee>])
     }
+
+    def demandeVisite(){
+        session.setAttribute("nomMusee",params.name)
+        render(view: '/visite/visite')
+    }
 }

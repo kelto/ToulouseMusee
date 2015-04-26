@@ -12,6 +12,29 @@
 </head>
 
 <body>
+    <g:form url="[controller:'visite',action:'visite']">
+        <fieldset style="text-align: center">
+            <table>
+                <tbody>
+                <tr>
+                    <td>Date de début :</td>
+                    <td><g:datePicker name="debut" value="${session.getAttribute("debut")}"/></td>
+                </tr>
+                <tr>
+                    <td>Date de fin :</td>
+                    <td><g:datePicker name="fin" value="${session.getAttribute("fin")}"/></td>
+                </tr>
+                <tr>
+                    <td>Nombre de personnes:</td>
+                    <td><g:select name="nb" from="${1..6}"
+                                              value="${session.getAttribute("nb")}"/></td>
+                </tr>
+                </tbody>
+            </table>
+            <br/><br/><br/>
+            <g:submitButton name="Envoyer"/>
+        </fieldset>
+    </g:form>
 
 </body>
 </html>
