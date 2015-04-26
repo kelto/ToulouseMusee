@@ -23,7 +23,7 @@ class MuseesFavorisService {
         boolean exist = museeList.each {
             if(it.id == id) return true
         }
-        if (!exit) {
+        if (!exist) {
             museeList.add(musee)
             session.setAttribute("favoris", museeList)
         }
@@ -36,7 +36,7 @@ class MuseesFavorisService {
         museeList.removeAll {
             it.id == id
         }
-        session.favoris = museeList
+        session.setAttribute("favoris",museeList)
 
     }
 
