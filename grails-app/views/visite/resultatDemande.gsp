@@ -8,16 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <meta name="layout" content="main">
+    <g:set var="pageHeader" value="Visite" scope="request"/>
     <title>Resultat Demande</title>
 </head>
 
 <body>
-        <p>
+        <div class="alert alert-success">
             Demande prise en compte
-        </p>
-        <p>
-            Votre code pour consulter : ${code}
-        </p>
+        </div>
+<div class="alert alert-success">
+    Votre code pour consulter : ${code}
+</div>
 
 </body>
 </html>

@@ -8,13 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <meta name="layout" content="main">
+    <g:set var="pageHeader" value="Statut de la Demande" scope="request"/>
     <title>Demande Visite</title>
 </head>
 
 <body>
-<h1>Visite n°${demande.code}</h1>
+<div class="alert alert-success">
+    <strong>Visite n°${demande.code}</strong>
+    Status: ${demande.statut}
+</div>
 
-<h2> Status: ${demande.statut}</h2>
-</table>
 </body>
 </html>
