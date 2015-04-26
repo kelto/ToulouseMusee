@@ -56,7 +56,7 @@
     </tbody>
     </table>
 <h1>Search</h1>
-    <g:form id="search" url="[controller: 'index', action: 'search']">
+    <g:form id="search" url="[controller: 'index', action: 'toSearch']">
         <label>Nom: </label>
         <g:textField name="nom"/><br/>
         <label>Nom de la rue: </label>
@@ -64,7 +64,7 @@
         <label>Code postal: </label>
         <g:select name="codePostal"
                   from="${toulousemusee.Adresse.list().codePostal.unique()}" />
-        <g:actionSubmit value="Rechercher" action="search"/>
+        <g:actionSubmit value="Rechercher" action="toSearch"/>
     </g:form>
 <table>
     <thead>
@@ -95,5 +95,11 @@
     </tbody>
     </g:each>
     </table>
+<g:if test="${session.getAttribute("page") > 0}">
+    <g:link class="edit" action="previous" controller="index" style="text-align: left">Precedente</g:link>
+</g:if>
+<g:if test="${session.getAttribute("nextPage")}">
+    <g:link class="edit" action="next" controller="index" style="text-align: right">Suivante</g:link>
+</g:if>
 </body>
 </html>
