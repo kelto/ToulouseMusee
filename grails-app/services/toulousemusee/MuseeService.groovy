@@ -16,7 +16,7 @@ class MuseeService {
         def first=Musee.MAX*page
         def last=Musee.MAX+1
 
-        def res = musee.list(max:last, offset:first,fetch:[adresse:"eager",gestionnaire:"eager"] ) {
+        def res = musee.list(max:last, offset:first) {
             if(likeNom){
                 like 'nom', "%${likeNom}%"
             }

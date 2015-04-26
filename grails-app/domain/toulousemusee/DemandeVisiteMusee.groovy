@@ -1,11 +1,17 @@
 package toulousemusee
 
 class DemandeVisiteMusee {
-
-    Musee musee;
     DemandeVisite demandeVisite;
-    Date dateDemande;
 
+
+    static belongsTo = [
+            demandeVisite : DemandeVisite,
+            musee : Musee
+    ]
+
+    static mapping = {
+        musee fetch: "join"
+    }
     static constraints = {
     }
 }
