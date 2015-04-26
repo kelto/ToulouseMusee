@@ -45,9 +45,10 @@
         <td>
 %{--
 <a href="${createLink( controller:'index', action:'removeFromFavorites', params: [id: museeInstance.id])}">remove </a>
+ <g:link action="demandeVisite" params="[name: museeInstance.nom]">Demande de visite</g:link>
 --}%
    <g:link action="removeFromFavorites" params="[id: museeInstance.id, name: museeInstance.nom]">Remove</g:link>
-   <g:link action="demandeVisite" params="[name: museeInstance.nom]">Demande de visite</g:link>
+
 
 </td>
 </tr>
@@ -90,6 +91,7 @@
     <td>${fieldValue(bean: museeInstance, field: "nom")}</td>
 
     <td>${fieldValue(bean: museeInstance, field: "telephone")}</td>
+    <td><g:link action="addToFavorites" params="[id: museeInstance.id, name: museeInstance.nom]">like</g:link></td>
     </tbody>
     </g:each>
     </table>

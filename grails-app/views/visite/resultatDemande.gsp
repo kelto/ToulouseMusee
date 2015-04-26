@@ -16,7 +16,7 @@
             Demande prise en compte
         </p>
         <p>
-            Votre code pour consulter : ${session.getAttribute("code")}
+            Votre code pour consulter : ${code}
         </p>
 
 </body>

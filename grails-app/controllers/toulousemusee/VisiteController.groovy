@@ -3,27 +3,20 @@ package toulousemusee
 class VisiteController {
 
     DemandeVisiteService demandeVisiteService
+    MuseesFavorisService museesFavorisService
+
     def index() {
+        [favoris: museesFavorisService.getFavorites(session)]
     }
 
     def visite() {
         def debut= params.debut
         def fin = params.fin
-        def nb = params.nb
+        def nb = params.int('nb')
+        def listBox = params.list('museeId')
 
-        Musee musee=Musee.findByNom(session.getAttribute("nomMusee"))
-        DemandeVisiteMusee demandeVisiteMusee=new DemandeVisiteMusee(dateDemande: new Date())
-        String code=session.getId() + new GregorianCalendar().getTimeInMillis().toString()
-        println(debut)
-        println(fin)
-        println(nb)
-        println(code)
-        println(musee.nom)
-        DemandeVisite demandeVisite=new DemandeVisite(dateDebutPeriode: debut, dateFinPeriode: fin, nbPersonnes: nb, statut: DemandeVisite.TO_BE_TREATED, code: code)
+        def visite = demandeVisiteService.addVisite(listBox,debut,fin,nb)
 
-        demandeVisiteService.addVisite(demandeVisite,demandeVisiteMusee,musee)
-        session.setAttribute("code",code)
-
-        render(view : "resultatDemande")
+        render(view : "resultatDemande", model:[code: visite.code])
     }
 }
