@@ -25,7 +25,7 @@ class VisiteController {
 
         def dv = demandeVisiteService.getVisite(code)
         if(dv == null){
-            redirect 'index'
+            redirect action: "index", method: "get"
         }
 
         [demande: dv]
